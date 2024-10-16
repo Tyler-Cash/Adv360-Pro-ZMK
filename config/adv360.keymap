@@ -40,7 +40,7 @@
             bindings = <
 &kp GRAVE  &hm F1 N1       &hm F2 N2       &hm F3 N3           &hm F4 N4         &hm F4 N5  &tog 1                                                     &mo 0      &hm F6 N6  &hm F7 N7         &hm F8 N8    &hm F9 N9       &hm F10 N0     &kp MINUS
 &kp ESC    &kp Q           &kp W           &kp F               &kp P             &kp G      &kp LS(F7)                                                 &none      &kp J      &kp L             &kp U        &kp Y           &kp SEMICOLON  &kp BSLH
-&kp TAB    &hm LEFT_WIN A  &hm LEFT_ALT R  &hm LEFT_CONTROL S  &hm LEFT_SHIFT T  &kp D      &kp F8      &kp ENTER  &kp LALT      &kp LGUI   &kp RCTRL  &none      &kp H      &hm LEFT_SHIFT N  &hm LCTRL E  &hm LEFT_ALT I  &hm LWIN O     &kp SQT
+&kp TAB    &hm LEFT_WIN A  &hm LEFT_ALT R  &hm LEFT_CONTROL S  &hm LEFT_SHIFT T  &kp D      &kp F8      &kp ENTER  &to 0         &kp LGUI   &kp RCTRL  &none      &kp H      &hm LEFT_SHIFT N  &hm LCTRL E  &hm LEFT_ALT I  &hm LWIN O     &kp SQT
 &kp LSHFT  &kp Z           &kp X           &kp C               &kp V             &kp B                             &kp HOME      &kp PG_UP                        &kp K      &kp M             &kp COMMA    &kp DOT         &kp FSLH       &kp RSHFT
 &mo 1      &kp LEFT        &kp RIGHT       &kp UP_ARROW        &kp DOWN_ARROW               &kp BSPC    &kp DEL    &kp END       &kp PG_DN  &kp ENTER  &kp SPACE             &kp EQUAL         &kp DOWN     &kp LBKT        &kp RBKT       &to 2
             >;
@@ -48,7 +48,7 @@
 
         layer_fn {
             bindings = <
-&kp F1  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5   &tog 2                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp F1  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5   &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &none                                       &none   &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans   &none   &trans  &trans      &trans  &trans  &none   &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                   &trans      &trans                  &trans  &trans  &trans  &trans  &trans  &trans
