@@ -16,9 +16,93 @@
         label = "HOMEROW_MODS";
         #binding-cells = <2>;
         tapping-term-ms = <200>;
-        quick_tap_ms = <175>;
+        quick-tap-ms = <175>;
         flavor = "tap-preferred";
         bindings = <&kp>, <&kp>;
+    };
+
+    // Left-hand home row mods: only trigger a hold when combined with a
+    // right-hand key or a thumb (positional hold-tap). Prevents same-hand
+    // misfires while typing.
+    hml: home_row_mod_left {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HRM_LEFT";
+        #binding-cells = <2>;
+        flavor = "balanced";
+        tapping-term-ms = <200>;
+        quick-tap-ms = <175>;
+        require-prior-idle-ms = <150>;
+        hold-trigger-on-release;
+        hold-trigger-key-positions = <
+            8 9 10 11 12 13
+            22 23 24 25 26 27
+            40 41 42 43 44 45
+            54 55 56 57 58 59
+            71 72 73 74 75
+            34 35 36 37 38 39 52 53 65 66 67 68 69 70
+        >;
+        bindings = <&kp>, <&kp>;
+    };
+
+    // Right-hand home row mods: mirror of hml, triggering on left-hand keys.
+    hmr: home_row_mod_right {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HRM_RIGHT";
+        #binding-cells = <2>;
+        flavor = "balanced";
+        tapping-term-ms = <200>;
+        quick-tap-ms = <175>;
+        require-prior-idle-ms = <150>;
+        hold-trigger-on-release;
+        hold-trigger-key-positions = <
+            0 1 2 3 4 5 6
+            14 15 16 17 18 19
+            28 29 30 31 32 33
+            46 47 48 49 50 51
+            60 61 62 63 64
+            34 35 36 37 38 39 52 53 65 66 67 68 69 70
+        >;
+        bindings = <&kp>, <&kp>;
+    };
+  };
+
+  combos {
+    compatible = "zmk,combos";
+
+    // caps word: T + D
+    combo_caps_word {
+        timeout-ms = <35>;
+        require-prior-idle-ms = <100>;
+        key-positions = <32 33>;
+        bindings = <&caps_word>;
+        layers = <0>;
+    };
+
+    // ( ) with cursor inside: W + S
+    combo_parens {
+        timeout-ms = <35>;
+        require-prior-idle-ms = <100>;
+        key-positions = <16 31>;
+        bindings = <&macro_parens>;
+        layers = <0>;
+    };
+
+    // [ ] with cursor inside: F + T
+    combo_brackets {
+        timeout-ms = <35>;
+        require-prior-idle-ms = <100>;
+        key-positions = <17 32>;
+        bindings = <&macro_brackets>;
+        layers = <0>;
+    };
+
+    // { } with cursor inside: P + D
+    combo_braces {
+        timeout-ms = <35>;
+        require-prior-idle-ms = <100>;
+        key-positions = <18 33>;
+        bindings = <&macro_braces>;
+        layers = <0>;
     };
   };
 
@@ -28,9 +112,9 @@
 
         default_layer {
             bindings = <
- &kp EQUAL          &hm F1 N1          &hm F2 N2              &hm F3 N3            &hm F4 N4  &hm F4 N5              &tog 1                                                                 &mo 3  &hm F6 N6            &hm F7 N7       &hm F8 N8          &hm F9 N9         &hm F10 N0  &kp MINUS
+ &kp EQUAL          &hm F1 N1          &hm F2 N2              &hm F3 N3            &hm F4 N4  &hm F5 N5              &tog 1                                                                 &mo 3  &hm F6 N6            &hm F7 N7       &hm F8 N8          &hm F9 N9         &hm F10 N0  &kp MINUS
    &kp ESC           &kp Q           &kp W               &kp F             &kp P   &kp G               &none                                                                 &none   &kp J             &kp L        &kp U           &kp Y  &kp SEMICOLON   &kp BSLH
-   &kp TAB  &hm LEFT_WIN A  &hm LEFT_ALT R  &hm LEFT_CONTROL S  &hm LEFT_SHIFT T   &kp D               &none  &kp ENTER  &kp LALT                   &kp LGUI  &kp RCTRL      &none   &kp H  &hm LEFT_SHIFT N  &hm LCTRL E  &hm LEFT_ALT I     &hm LWIN O    &kp SQT
+   &kp TAB  &hml LEFT_WIN A  &hml LEFT_ALT R  &hml LEFT_CONTROL S  &hml LEFT_SHIFT T   &kp D               &none  &kp ENTER  &kp LALT                   &kp LGUI  &kp RCTRL      &none   &kp H  &hmr LEFT_SHIFT N  &hmr LCTRL E  &hmr LEFT_ALT I     &hmr LWIN O    &kp SQT
  &kp LSHFT           &kp Z           &kp X               &kp C             &kp V   &kp B                                 &kp HOME                  &kp PG_UP                         &kp K             &kp M    &kp COMMA         &kp DOT       &kp FSLH  &kp RSHFT
      &mo 2        &kp LEFT       &kp RIGHT        &kp UP_ARROW    &kp DOWN_ARROW                    &kp BSPC    &kp DEL   &kp END                  &kp PG_DN  &kp ENTER  &kp SPACE                 &kp GRAVE     &kp DOWN        &kp LBKT       &kp RBKT      &mo 2
             >;
